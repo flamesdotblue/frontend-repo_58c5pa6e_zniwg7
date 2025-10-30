@@ -1,28 +1,40 @@
-import { useState } from 'react'
+import React from 'react';
+import HeroScene from './components/HeroScene';
+import FanPortalMock from './components/FanPortalMock';
+import OrganizerPortalMock from './components/OrganizerPortalMock';
+import DesignSystemPanel from './components/DesignSystemPanel';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
-    </div>
-  )
-}
+    <div className="min-h-screen w-full bg-[#0a0b10] text-white">
+      {/* Hero with interactive Spline */}
+      <HeroScene />
 
-export default App
+      {/* Bifurcated wide-screen composition */
+      <section className="relative -mt-24 w-full px-4 pb-16 sm:px-8 md:px-12">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            {/* Fan-facing web portal */}
+            <div>
+              <div className="mb-3 text-xs font-semibold uppercase tracking-wider text-pink-200/80">Fan-Facing Web Portal</div>
+              <FanPortalMock />
+            </div>
+
+            {/* Professional organizer portal */}
+            <div>
+              <div className="mb-3 text-xs font-semibold uppercase tracking-wider text-cyan-200/80">Professional Organizer Web Portal</div>
+              <OrganizerPortalMock />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Design system panel to reinforce shared language */}
+      <DesignSystemPanel />
+
+      <footer className="mx-auto max-w-6xl px-6 pb-16 text-center text-xs text-white/50">
+        © {new Date().getFullYear()} StageVerse — Dual-platform UI/UX system exploration.
+      </footer>
+    </div>
+  );
+}
